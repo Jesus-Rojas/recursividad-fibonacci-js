@@ -1,11 +1,14 @@
-function fibonacci(n) {
+const memo = [];
+
+function memoFibonacci(n) {
     console.log('bucle')
 	if (n === 0 || n === 1) {
 		return 1;
-	} else {
-		return fibonacci(n - 1) + fibonacci(n - 2);
-	}
+	} else if (!memo[n]) {
+		memo[n] = memoFibonacci(n - 1) + memoFibonacci(n - 2);
+	}  
+	return memo[n];
 }
 
-console.log(fibonacci(5))
-console.log(fibonacci(10))
+console.log(memoFibonacci(5))
+console.log(memoFibonacci(10))
